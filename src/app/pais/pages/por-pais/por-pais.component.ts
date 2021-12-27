@@ -32,7 +32,7 @@ export class PorPaisComponent implements OnInit {
         this.paises = [];
         console.log('buscar err', err);
         
-      })
+      });
   }
 
   sugerencias( termino: string ) {

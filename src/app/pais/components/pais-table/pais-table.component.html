@@ -16,7 +16,7 @@
                         src="{{pais.flags.svg}}" 
                         alt="bandera de {{pais.name.common}}">
             </td>
-            <td>{{pais.name.common}}, capital {{pais.capital}}</td>
+            <td>{{pais.name.common || pais.name }}, capital {{pais.capital}}</td>
             <td>{{pais.population | number}}</td>
             <td>
                 <a [routerLink]="['/pais', pais.cca2]">Ver...</a>

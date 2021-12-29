@@ -12,6 +12,8 @@ export class PorPaisComponent implements OnInit {
   termino: string = '';
   hayError: boolean = false;
   paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
+  mostrarSugerencias: boolean = false;
 
   constructor( private paisService: PaisService ) { }
 
@@ -36,8 +38,19 @@ export class PorPaisComponent implements OnInit {
   }
 
   sugerencias( termino: string ) {
+    this.mostrarSugerencias = true;
     this.hayError = false;
-    // TODO: crear sugerencias
+    this.termino = termino;
+    this.paisService.buscarPais( this.termino )
+      .subscribe( 
+        paises => { this.paisesSugeridos = paises.splice(0,5) },
+        err => this.paisesSugeridos = [] 
+      );
+  }
+
+  buscarSugerido( termino: string ) {
+    this.buscar( termino );
+    this.mostrarSugerencias = false;
   }
 
 }
